@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#030712] text-slate-100 font-sans selection:bg-cyan-400/30;
+    background-image: 
+      radial-gradient(ellipse at 20% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(139, 92, 246, 0.06) 0px, transparent 50%);
+  }
+}
+
+/* ── Futuristic Animations ── */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(6, 182, 212, 0.15); }
+  50% { border-color: rgba(6, 182, 212, 0.4); }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer components {
+  .glass {
+    @apply bg-slate-900/50 backdrop-blur-2xl border border-cyan-500/10;
+    animation: pulseGlow 6s ease-in-out infinite;
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl p-8 transition-all duration-500 relative overflow-hidden;
+    animation: fadeSlideUp 0.6s ease-out both;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .glass-card:hover {
+    @apply bg-slate-800/60 border-cyan-500/25;
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.08), 0 20px 50px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+  }
+
+  .neon-card-emerald {
+    @apply glass-card border-cyan-500/15;
+  }
+  .neon-card-emerald:hover {
+    @apply border-cyan-400/40;
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.12), 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .neon-card-blue {
+    @apply glass-card border-violet-500/15;
+  }
+  .neon-card-blue:hover {
+    @apply border-violet-400/40;
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.12), 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .neon-card-purple {
+    @apply glass-card border-fuchsia-500/15;
+  }
+  .neon-card-purple:hover {
+    @apply border-fuchsia-400/40;
+    box-shadow: 0 0 35px rgba(217, 70, 239, 0.12), 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .neon-card-amber {
+    @apply glass-card border-amber-500/15;
+  }
+  .neon-card-amber:hover {
+    @apply border-amber-400/40;
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.12), 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .stat-card {
+    @apply glass rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-2 transition-all duration-500;
+    animation: floatUp 5s ease-in-out infinite, fadeSlideUp 0.5s ease-out both;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .btn-primary {
+    @apply px-6 py-2.5 text-white rounded-full font-bold transition-all duration-300 active:scale-95;
+    background: linear-gradient(135deg, #06b6d4, #8b5cf6, #06b6d4);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
+    transform: scale(1.05);
+  }
+
+  .nav-item {
+    @apply px-5 py-2 rounded-full transition-all duration-300 cursor-pointer text-slate-500 font-medium;
+  }
+
+  .nav-item:hover {
+    @apply text-slate-300;
+    background: rgba(6, 182, 212, 0.05);
+  }
+
+  .nav-item-active {
+    @apply px-5 py-2 rounded-full text-cyan-300 font-semibold;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1), inset 0 0 15px rgba(6, 182, 212, 0.05);
+  }
+
+  .neon-text-emerald {
+    @apply text-cyan-400;
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+  }
+
+  .neon-text-cyan {
+    @apply text-violet-400;
+    text-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #e2e8f0, #94a3b8);
+}
+
+.neon-gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #22d3ee, #a78bfa, #22d3ee);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-cyan-500/20 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-cyan-500/40;
+}
