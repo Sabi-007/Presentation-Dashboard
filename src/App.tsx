@@ -390,8 +390,8 @@ export default function App() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="https://my-edu-connect.netlify.app/" target="_blank" rel="noopener noreferrer" className="btn-primary flex items-center gap-3 italic tracking-tighter text-sm">
+          <div className="flex items-center gap-4 w-full lg:w-auto justify-center mt-2 lg:mt-0">
+            <a href="https://my-edu-connect.netlify.app/" target="_blank" rel="noopener noreferrer" className="btn-primary flex items-center justify-center w-full sm:w-auto gap-3 italic tracking-tighter text-sm">
               LAUNCH <ExternalLink className="w-4 h-4" />
             </a>
           </div>
