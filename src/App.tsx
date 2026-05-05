@@ -217,18 +217,18 @@ const ArchitecturePage = () => (
       <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
         <Cpu className="text-cyan-400" /> Pipeline Flow
       </h3>
-      <div className="flex flex-wrap items-center justify-center gap-6 py-10">
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4 md:gap-6 py-6 md:py-10">
         {[
           { label: 'Edge Runtime', color: 'violet' },
           { label: 'Server Actions', color: 'cyan' },
           { label: 'Neon Postgres', color: 'sky' },
           { label: 'LPU Inference', color: 'fuchsia' }
         ].map((step, i, arr) => (
-          <div key={step.label} className="flex items-center gap-6">
-            <div className={`px-8 py-4 rounded-2xl border border-${step.color}-500/30 bg-${step.color}-500/10 text-${step.color}-400 font-black tracking-widest uppercase text-sm shadow-[0_0_20px_rgba(var(--${step.color}-rgb),0.1)]`}>
+          <div key={step.label} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <div className={`px-6 md:px-8 py-3 md:py-4 rounded-2xl border border-${step.color}-500/30 bg-${step.color}-500/10 text-${step.color}-400 font-black tracking-widest uppercase text-xs md:text-sm shadow-[0_0_20px_rgba(var(--${step.color}-rgb),0.1)] text-center`}>
               {step.label}
             </div>
-            {i < arr.length - 1 && <ChevronRight className="text-slate-700 w-8 h-8" />}
+            {i < arr.length - 1 && <ChevronRight className="text-slate-700 w-6 h-6 md:w-8 md:h-8 rotate-90 md:rotate-0" />}
           </div>
         ))}
       </div>
@@ -271,13 +271,13 @@ const AIFeaturesPage = () => (
 
     <div className="neon-card-blue bg-violet-500/5 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-[100px] -mr-32 -mt-32" />
-      <div className="flex items-center gap-6 mb-10 relative z-10">
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-8 sm:mb-10 relative z-10 text-center sm:text-left">
         <div className="p-4 bg-violet-500/20 rounded-3xl border border-violet-500/30 animate-pulse">
           <Zap className="w-8 h-8 text-violet-400" />
         </div>
         <div>
-          <h4 className="text-3xl font-black italic tracking-tighter">THE GROQ ADVANTAGE</h4>
-          <p className="text-violet-400/60 font-bold uppercase tracking-widest text-xs">Unmatched Latency Performance</p>
+          <h4 className="text-2xl sm:text-3xl font-black italic tracking-tighter">THE GROQ ADVANTAGE</h4>
+          <p className="text-violet-400/60 font-bold uppercase tracking-widest text-xs mt-1 sm:mt-0">Unmatched Latency Performance</p>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
@@ -315,11 +315,11 @@ const SecurityPage = () => (
             { id: '02', title: 'Stateful OTP', desc: 'Rate-limited 6-digit verification with session-bound tokens.' },
             { id: '03', title: 'HTTP-Only Cookies', desc: 'Secure JWT delivery with CSRF/XSS mitigation strategies.' }
           ].map((item) => (
-            <div key={item.id} className="flex gap-6 group">
+            <div key={item.id} className="flex flex-col sm:flex-row gap-4 sm:gap-6 group text-center sm:text-left items-center sm:items-start">
               <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-400 font-black group-hover:scale-110 transition-transform">{item.id}</div>
               <div>
                 <h5 className="font-black text-lg mb-1 italic uppercase tracking-tight">{item.title}</h5>
-                <p className="text-slate-400 font-medium">{item.desc}</p>
+                <p className="text-slate-400 font-medium text-sm sm:text-base">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -361,10 +361,10 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen p-6 md:p-12 max-w-7xl mx-auto flex flex-col gap-12 selection:bg-cyan-500 selection:text-white">
+    <div className="min-h-screen p-4 sm:p-6 md:p-12 max-w-7xl mx-auto flex flex-col gap-8 md:gap-12 selection:bg-cyan-500 selection:text-white">
       {/* Navbar */}
-      <header className="sticky top-8 z-50">
-        <nav className="flex flex-col lg:flex-row items-center justify-between gap-6 p-4 glass rounded-[40px] px-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-white/10">
+      <header className="sticky top-4 md:top-8 z-50">
+        <nav className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6 p-4 glass rounded-[2rem] md:rounded-[40px] px-4 md:px-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-white/10">
           <div className="flex items-center gap-4 group cursor-pointer">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-violet-500 flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:rotate-12 transition-transform duration-500">
               E
@@ -375,7 +375,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 p-1 bg-black/20 rounded-full border border-white/5">
+          <div className="flex items-center gap-2 p-1 bg-black/20 rounded-full border border-white/5 w-full overflow-x-auto custom-scrollbar md:w-auto md:overflow-visible">
             {tabs.map(tab => (
               <button
                 key={tab.id}
@@ -417,16 +417,16 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="pt-20 pb-10 border-t border-white/5">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-left">
+      <footer className="pt-12 md:pt-20 pb-8 md:pb-10 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+          <div className="text-center md:text-left">
             <p className="text-slate-500 font-bold text-sm tracking-tight mb-1 italic">© 2026 EduConnect Intelligence.</p>
-            <p className="text-slate-600 text-xs font-medium max-w-sm leading-relaxed">
+            <p className="text-slate-600 text-xs font-medium max-w-sm leading-relaxed mx-auto md:mx-0">
               Synthesized for the Final Year Viva-Voce. Engineered for excellence.
             </p>
           </div>
           
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
             {[
               { label: 'Next.js 16', icon: <Globe className="w-4 h-4" /> },
               { label: 'Groq AI', icon: <Cpu className="w-4 h-4" /> },
