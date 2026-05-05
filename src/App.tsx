@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, 
@@ -142,7 +142,7 @@ const DashboardHome = () => (
               {FEATURE_COMPLETION.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.value === 100 ? '#06b6d4' : '#8b5cf6'} fillOpacity={0.8} />
               ))}
-              <LabelList dataKey="value" position="right" fill="#e2e8f0" fontSize={12} fontWeight={900} formatter={(val: number) => `${val}%`} />
+              <LabelList dataKey="value" position="right" fill="#e2e8f0" fontSize={12} fontWeight={900} formatter={(val: any) => `${val}%`} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
